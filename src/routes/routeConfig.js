@@ -12,10 +12,8 @@ export class StackNavigator extends Component {
             ...this.props,
             _route_module:LoadingModule
         }
-        
     }
     componentWillReceiveProps(nextProps){
-        //debugger
         this.setState({...nextProps},()=>{
             const d=new DynamicRouter(this.state.screen.componentDest);
             d.loadComponent().then(cmp=>{
@@ -24,7 +22,6 @@ export class StackNavigator extends Component {
             let b=new BrowserManager(window);
             b.updateRoute({},this.state.name,`/${this.state.screen.name}`)
         })
-        
     }
     componentWillMount(){
         const d=new DynamicRouter(this.state.screen.componentDest);

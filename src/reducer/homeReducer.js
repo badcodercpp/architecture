@@ -1,7 +1,7 @@
 
-export const demoReducer = (state = [], action)=>{
+export const homeReducer = (state = [], action)=>{
     switch (action.type) {
-        case 'DEMO_ACTION':
+        case 'HOME_ACTION':
           return [
             ...state,
             {

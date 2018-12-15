@@ -4,6 +4,8 @@ import {DynamicRouter} from './dynamicRouter';
 
 import {LoadingModule} from './../Loader/moduleLoader'
 
+//import {PRATIBHA_KEY_DEMO_STORE} from './../store/key/storeKey'
+
 
 export class StackNavigator extends Component {
     constructor(props){
@@ -13,6 +15,9 @@ export class StackNavigator extends Component {
             _route_module:LoadingModule
         }
     }
+    mapStoreToUrl=(store,suffix)=>{
+        return `/store/${store}/${suffix}`
+    }
     componentWillReceiveProps(nextProps){
         this.setState({...nextProps},()=>{
             const d=new DynamicRouter(this.state.screen.componentDest);
@@ -20,7 +25,9 @@ export class StackNavigator extends Component {
                 this.setState({_route_module:cmp.default})
             })
             let b=new BrowserManager(window);
-            b.updateRoute({},this.state.name,`/${this.state.screen.name}`)
+            let m=this.mapStoreToUrl(this.state.store_key,`component/${this.state.screen.name}`)
+            //b.updateRoute({},this.state.name,`/${this.state.screen.name}`)
+            b.updateRoute({},this.state.name,m)
         })
     }
     componentWillMount(){
@@ -31,7 +38,9 @@ export class StackNavigator extends Component {
     }
     componentDidMount(){
         let b=new BrowserManager(window);
-        b.updateRoute({},this.state.name,`/${this.state.screen.name}`)
+        let m=this.mapStoreToUrl(this.state.store_key,`component/${this.state.screen.name}`)
+        //b.updateRoute({},this.state.name,`/${this.state.screen.name}`)
+        b.updateRoute({},this.state.name,m)
     }
     render(){
         return (

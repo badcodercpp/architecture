@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 
 import {DemoScreen} from './../screen/screenContainer';
 import {RouteCreator} from './../routes/routeCreator';
+import {PRATIBHA_KEY_DEMO_STORE} from './../store/key/storeKey'
 
 export default class HomeComponent extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ export default class HomeComponent extends Component {
     }
     clickMe=(evt)=>{
         let r=new RouteCreator();
-        r.createRoute(DemoScreen);
+        r.createRoute(DemoScreen,PRATIBHA_KEY_DEMO_STORE);
     }
     render(){
         return (

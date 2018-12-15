@@ -5,6 +5,16 @@ import {StackNavigator} from './routes/routeConfig';
 
 import * as Screen from './screen/screenContainer';
 import {RouteCreator} from './routes/routeCreator';
+import { createStore } from 'redux'
+import reducer from './reducer/index'
+import { Provider } from 'react-redux'
+import {createProvider} from 'react-redux'
+import {PRATIBHA_KEY_DEMO_STORE} from './store/key/storeKey'
+
+//const Provider = createProvider(PRATIBHA_KEY_DEMO_STORE)
+const store = createStore(reducer)
+window.store=store;
+console.log(store.getState())
 
 
 class App extends Component {
@@ -32,10 +42,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <StackNavigator screen={this.state.screen} >
-        </StackNavigator>
-      </div>
+      <Provider store={store} storeKey={PRATIBHA_KEY_DEMO_STORE} >
+        <div className="App">
+          <StackNavigator screen={this.state.screen} >
+          </StackNavigator>
+        </div>
+      </Provider>
     );
   }
 }

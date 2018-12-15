@@ -3,6 +3,6 @@ export class DynamicRouter {
         this._componentName=componentName;
     }
     loadComponent(){
-        return import(`./.././component/${this._componentName}`)
+        return import(`./.././${this._componentName}`)
     }
 }

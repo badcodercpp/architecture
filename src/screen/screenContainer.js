@@ -1,8 +1,14 @@
 export const HomeScreen={
     name:"HomeComponent",
-    componentDest:"home.component.js"
+    componentDest:"component/home.component.js"
 }
+
+/*export const DemoScreen={
+    name:"DemoComponent",
+    componentDest:"component/demo.component.js"
+}*/
+
 export const DemoScreen={
     name:"DemoComponent",
-    componentDest:"demo.component.js"
+    componentDest:"container/demoContainer.js"
 }

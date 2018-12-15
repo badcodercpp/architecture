@@ -2,13 +2,10 @@
 export const homeReducer = (state = [], action)=>{
     switch (action.type) {
         case 'HOME_ACTION':
-          return [
+          return {
             ...state,
-            {
-              id: action.id,
-              text: action.text
-            }
-          ]
+              name:action.name
+          }
         default:
           return state
     }

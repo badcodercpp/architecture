@@ -2,13 +2,16 @@
 export const demoReducer = (state = [], action)=>{
     switch (action.type) {
         case 'DEMO_ACTION':
-          return [
+          return {
             ...state,
-            {
-              id: action.id,
-              text: action.text
-            }
-          ]
+              name:action.name
+          }
+          case 'TOGGLE_NAME':
+          console.log(action)
+          return {
+            ...state,
+              name:action.name
+          }
         default:
           return state
     }

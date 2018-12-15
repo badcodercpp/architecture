@@ -5,6 +5,25 @@ import {StackNavigator} from './routes/routeConfig';
 
 import * as Screen from './screen/screenContainer';
 import {RouteCreator} from './routes/routeCreator';
+import { createStore } from 'redux'
+import reducer from './reducer/index'
+import { Provider } from 'react-redux'
+import {createProvider} from 'react-redux'
+import {PRATIBHA_KEY_DEMO_STORE} from './store/key/storeKey'
+import * as StoreKeys from './store/key/storeKey'
+import GUID from './util/storeKeyToIdMapper'
+
+
+window.StoreContainer=[];
+
+for(const a in StoreKeys){
+  let g=new GUID();
+  let d=g.getGUID();
+  window.StoreContainer[a]=d
+}
+
+const store = createStore(reducer)
+window.store=store;
 
 
 class App extends Component {
@@ -17,12 +36,15 @@ class App extends Component {
   }
   componentWillMount(){
     this._remove_route=window.addEventListener("newRoute", (evt)=>{
-      this.setState({screen:evt.detail.message},()=>{
+      this.setState({screen:evt.detail.message,store:evt.detail.store},()=>{
         //console.log(this.state)
       })
     });
     const r=new RouteCreator();
-    r.createRoute(Screen.HomeScreen);
+    r.createRoute(Screen.HomeScreen,window.StoreContainer[PRATIBHA_KEY_DEMO_STORE]);
+    this.setState({
+      _g_store_key:window.StoreContainer[PRATIBHA_KEY_DEMO_STORE]
+    })
   }
   componentDidMount(){
 
@@ -32,10 +54,12 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <StackNavigator screen={this.state.screen} >
-        </StackNavigator>
-      </div>
+      <Provider store={store} storeKey={this.state._g_store_key} >
+        <div className="App">
+          <StackNavigator screen={this.state.screen} store_key={this.state._g_store_key} >
+          </StackNavigator>
+        </div>
+      </Provider>
     );
   }
 }

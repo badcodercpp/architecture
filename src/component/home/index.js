@@ -1,7 +1,9 @@
 
 import React,{Component} from 'react';
+import Head from './head'
+import Body from './body'
 
-export default class HeadUpper extends Component {
+export default class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -10,8 +12,9 @@ export default class HeadUpper extends Component {
     }
     render(){
         return (
-            <div>
-                home head upper
+            <div id="home_container">
+                <Head />
+                <Body />
             </div>
         )
     }

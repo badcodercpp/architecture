@@ -1,7 +1,7 @@
 
 import React,{Component} from 'react';
 
-export default class HeadUpper extends Component {
+export default class BodyLower extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ export default class HeadUpper extends Component {
     render(){
         return (
             <div>
-                home head upper
+                home body lower
             </div>
         )
     }

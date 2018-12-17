@@ -5,9 +5,9 @@ import DemoComponent from '../component/demo.component';
 import {PRATIBHA_KEY_DEMO_STORE} from './../store/key/storeKey';
 import * as Actions from './../action/actionCreator';
 import {bindActionCreators} from 'redux';
-import React,{Component} from 'react'
+//import React,{Component} from 'react'
 
-import {demoStore} from './../store/demoStore'
+//import {demoStore} from './../store/demoStore'
 
 const mapStateToProps = (state) =>{
     return {

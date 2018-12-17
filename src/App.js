@@ -13,6 +13,8 @@ import {PRATIBHA_KEY_DEMO_STORE} from './store/key/storeKey'
 import * as StoreKeys from './store/key/storeKey'
 import GUID from './util/storeKeyToIdMapper'
 
+import FixedHeader from './component/fixed/header/header.js'
+
 
 window.StoreContainer=[];
 
@@ -56,6 +58,7 @@ class App extends Component {
     return (
       <Provider store={store} storeKey={this.state._g_store_key} >
         <div className="App">
+          <FixedHeader />
           <StackNavigator screen={this.state.screen} store_key={this.state._g_store_key} >
           </StackNavigator>
         </div>

@@ -1,6 +1,11 @@
-export const HomeScreen={
+/*export const HomeScreen={
     name:"HomeComponent",
     componentDest:"component/home.component.js"
+}*/
+
+export const HomeScreen={
+    name:"abc",
+    componentDest:"component/home"
 }
 
 /*export const DemoScreen={

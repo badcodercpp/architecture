@@ -27,6 +27,33 @@ for(const a in StoreKeys){
 const store = createStore(reducer)
 window.store=store;
 
+window.addEventListener("load", function(event) {
+  let loc=window.location.href.split('/')
+  console.log(loc[loc.length-1])
+  console.log(Screen.HomeScreen);
+  if (loc[loc.length-2]==="component") {
+    let comp=loc[loc.length-1];
+    console.log(comp)
+    //let screen=
+    let navScreen;
+    for(const s in Screen){
+      //console.log(Screen[s])
+      //console.log(s)
+      if (Screen[s].name==comp) {
+        navScreen=Screen[s];
+        
+        break;
+      } else {
+        navScreen=Screen.HomeScreen
+      }
+    }
+    const r=new RouteCreator();
+    console.log(navScreen)
+    r.createRoute(navScreen,window.StoreContainer[PRATIBHA_KEY_DEMO_STORE]);
+  } else {
+    throw new Error("Invalid Component name or destination")
+  }
+});
 
 class App extends Component {
   constructor(props){
@@ -42,11 +69,40 @@ class App extends Component {
         //console.log(this.state)
       })
     });
-    const r=new RouteCreator();
-    r.createRoute(Screen.HomeScreen,window.StoreContainer[PRATIBHA_KEY_DEMO_STORE]);
+
+    let loc=window.location.href.split('/')
+    //console.log(loc[loc.length-1])
+    //console.log(Screen.HomeScreen);
+    if (loc[loc.length-2]==="component") {
+      let undef=loc[loc.length-1]
+      console.log(undef !== undefined)
+      console.log(undef)
+      let navScreen;
+      for(const s in Screen){
+        //console.log(Screen[s])
+        //console.log(s)
+        if (Screen[s].name==undef) {
+          navScreen=Screen[s];
+          
+          break;
+        } else {
+          navScreen=Screen.LoadingScreen
+        }
+      }
+
+      const r=new RouteCreator();
+      r.createRoute(navScreen,window.StoreContainer[PRATIBHA_KEY_DEMO_STORE]);
+
+    }else{
+      throw new Error("Unvalid component route")
+    }
+
+
+    
     this.setState({
       _g_store_key:window.StoreContainer[PRATIBHA_KEY_DEMO_STORE]
     })
+    
   }
   componentDidMount(){
 

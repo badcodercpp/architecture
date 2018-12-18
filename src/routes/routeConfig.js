@@ -16,7 +16,8 @@ export class StackNavigator extends Component {
         }
     }
     mapStoreToUrl=(store,suffix)=>{
-        return `/store/${store}/${suffix}`
+        //`/store/${store}/${suffix}`
+        return `/${suffix}`
     }
     componentWillReceiveProps(nextProps){
         this.setState({...nextProps},()=>{

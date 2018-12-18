@@ -20,6 +20,7 @@ export class StackNavigator extends Component {
     }
     componentWillReceiveProps(nextProps){
         this.setState({...nextProps},()=>{
+            console.log(this.state.screen.componentDest)
             const d=new DynamicRouter(this.state.screen.componentDest);
             d.loadComponent().then(cmp=>{
                 this.setState({_route_module:cmp.default})
